@@ -1,67 +1,53 @@
-# unsupervised-machine-learning
+# Unsupervised Machine Learning for Myopia Prediction
 
-## Final Analysis- 
+This repository contains the analysis and machine learning model used to explore clustering patients based on characteristics that may influence myopia (nearsightedness). The project applies unsupervised learning techniques to identify patterns in the data that could provide insights into different patient subgroups. 
 
-The myopic dataset can be broken down into 3 distinct cluster. This is done by using the principal component method. Using 2 PCA's the amount of data represented is 38% while increasing the PCA's to 3 represents 47.24% of the data. There is a clear grouping of patient characteristics within the dataset. In order to see a better percentage of the data represented in this model, it may be helpful to determine which columns are the most important in predicting myopia and reduce the amount of columns in the dataset. 
+## Project Overview
 
+The goal of this project was to apply unsupervised learning to the provided medical dataset in order to determine if patients can be grouped into distinct clusters based on their characteristics. This analysis is performed in the context of predicting myopia (nearsightedness), but the task focuses on unsupervised clustering rather than supervised prediction.
 
-## Module 20 Challenge
-Due Nov 10 by 11:59pm Points 100 Submitting a text entry box or a website url
-Background
-You are on the data science team of a medical research company that’s interested in finding better ways to predict myopia, or nearsightedness. Your team has tried—and failed—to improve their classification model when training on the whole dataset. However, they believe that there might be distinct groups of patients that would be better to analyze separately. So, your supervisor has asked you to explore this possibility by using unsupervised learning.
+### Key Steps Taken:
+1. **Data Preprocessing**: The dataset was cleaned and standardized to remove any biases before applying machine learning algorithms.
+2. **Dimensionality Reduction**: PCA (Principal Component Analysis) was used to reduce the number of features while preserving 90% of the data variance.
+3. **Cluster Analysis**: K-means clustering was performed to identify potential clusters in the data. An elbow plot was used to determine the optimal number of clusters.
+4. **Visualization**: t-SNE was applied to visualize the dimensionality reduction and inspect the distinctness of clusters.
 
-You have been provided with raw data, so you’ll first need to process it to fit the machine learning models. You will use several clustering algorithms to explore whether the patients can be placed into distinct groups. Then, you’ll create a visualization to share your findings with your team and other key stakeholders.
+## Final Analysis
 
-### Before You Begin
-Create a new repository for this project called unsupervised-machine-learning-challenge. Do not add this Challenge to an existing repository.
+Through the use of PCA and K-means clustering, it was determined that the dataset can be split into **3 distinct clusters**. 
+- Using two principal components (PCA=2), 38% of the data variance is explained, while increasing to three components (PCA=3) captures 47.24% of the variance.
+- A clear grouping of patient characteristics was observed, suggesting that the clustering technique reveals underlying patterns in the data.
+- Further investigation into which features are most important for predicting myopia may help reduce the number of variables and potentially improve the clustering model.
 
-Clone the new repository to your computer.
+## Project Breakdown
 
-### Files
-Download the following files to help you get started:
+### Part 1: Data Preparation
+- Read the dataset from `myopia.csv`.
+- Removed the "MYOPIC" target column to ensure an unbiased unsupervised learning process.
+- Standardized the dataset to ensure all features contribute equally to the analysis.
 
-Module 20 Challenge files
+### Part 2: Dimensionality Reduction
+- Applied PCA to reduce the number of features while retaining 90% of the variance.
+- Further reduced the data's dimensionality using t-SNE and visualized the results with a scatter plot to check for distinct clusters.
 
-### Instructions
-This activity is broken down into four parts:
+### Part 3: Cluster Analysis with K-means
+- Generated an elbow plot to determine the optimal number of clusters.
+- Performed K-means clustering on the dataset, testing for clusters between 1 to 10 and identifying the elbow point.
 
-Part 1: Prepare the Data.
+### Part 4: Recommendation
+Based on the analysis:
+- Patients can indeed be clustered into **3 distinct groups** based on the available characteristics.
+- These clusters can potentially be analyzed separately to improve myopia prediction models.
 
-Part 2: Apply Dimensionality Reduction.
+## Files Included
 
-Part 3: Perform a Cluster Analysis with K-means.
+- `myopia.csv`: The raw dataset containing patient characteristics.
+- `myopia_pca_tsne_kmeans.ipynb`: Jupyter notebook containing the analysis, including code for PCA, t-SNE, and K-means clustering.
 
-Part 4: Make a Recommendation.
+## Installation
 
-### Part 1: Prepare the Data
-Read myopia.csv into a Pandas DataFrame.
+To run the code and analysis in this repository:
 
-Note: This file can be found in your Module 20 Challenge files.
-Remove the "MYOPIC" column from the dataset.
-
-Note: The target column is needed for supervised machine learning, but it will make an unsupervised model biased. After all, the target column is effectively providing clusters already!
-Standardize your dataset so that columns that contain larger values do not influence the outcome more than columns with smaller values.
-
-### Part 2: Apply Dimensionality Reduction
-Perform dimensionality reduction with PCA. How did the number of the features change?
-Hint: Rather than specify the number of principal components when you instantiate the PCA model, state the desired explained variance. For example, say that a dataset has 100 features. Using PCA(n_components=0.99) creates a model that will preserve approximately 99% of the explained variance, whether that means reducing the dataset to 80 principal components or 3. For this assignment, preserve 90% of the explained variance in dimensionality reduction.
-Further reduce the dataset dimensions with t-SNE and visually inspect the results. To do this, run t-SNE on the principal components, which is the output of the PCA transformation.
-
-Create a scatter plot of the t-SNE output. Are there distinct clusters?
-
-### Part 3: Perform a Cluster Analysis with K-means
-Create an elbow plot to identify the best number of clusters. Make sure to do the following:
-
-Use a for loop to determine the inertia for each k between 1 through 10.
-
-If possible, determine where the elbow of the plot is, and at which value of k it appears.
-
-### Part 4: Make a Recommendation
-Based on your findings, write up a brief (one or two sentences) recommendation for your supervisor in your Jupyter Notebook. Can the patients be clustered? If so, into how many clusters?
-
-### Submission
-To submit your Challenge assignment, click Submit, and then provide the URL of your GitHub repository for grading.
-
-
-References
-Reduced dataset from Orinda Longitudinal Study of Myopia conducted by the US National Eye Institute
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/unsupervised-machine-learning.git
